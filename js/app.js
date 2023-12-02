@@ -4,22 +4,29 @@ const baseApiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 const image = document.querySelector('#image');
 const pokeNumber = document.querySelector('#number');
 const pokeName = document.querySelector('#name');
-
 // allez cherhcer les abilities pour les abilities cacher ajouté un icone et faire en sorte que img de deplacer pour faire apparaitre les abilities
-// const frontDefault = `data.sprites.other["official-artwork"].front_default`;
-// const frontShiny = `data.sprites.other["official-artwork"].front_shiny`;
+
 
 
 const createCard = (data) => { 
     console.log(data);
     image.src = data.sprites.other["official-artwork"].front_default;
     pokeNumber.textContent = `#${data.id}`;
-    pokeName.textContent = data.name;    
+    pokeName.textContent = data.name;
+        // Affichage des abilities dans la liste
+    const abilitiesList = document.querySelector('#liste-abilities');
+    abilitiesList.innerHTML = ''; // Efface la liste précédente
+
+    data.abilities.forEach(ability => {
+        const li = document.createElement('li');
+        li.textContent = ability.ability.name;
+        abilitiesList.appendChild(li);
+    });
 }
 /**
  * function fetchUrl
  * @param {string} url 
- */
+*/
 const fetchUrl = async (url) => {
     console.log(url);
     const data = await fetch(url);
@@ -30,6 +37,7 @@ const fetchUrl = async (url) => {
     }else{
         //message d'erreur TO DO
     }
+    
 };
 
 const changePokemon = () => {
@@ -41,3 +49,4 @@ const changePokemon = () => {
 
 btn.addEventListener('click', changePokemon);
 // console.log(btn)
+
