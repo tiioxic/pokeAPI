@@ -12,7 +12,7 @@ const pokeName = document.querySelector('#name');
 
 const createCard = (data) => { 
     console.log(data);
-    image.src = data.sprites.other["official-artwork"].front_shiny;
+    image.src = data.sprites.other["official-artwork"].front_default;
     pokeNumber.textContent = `#${data.id}`;
     pokeName.textContent = data.name;    
 }
