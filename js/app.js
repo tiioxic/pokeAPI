@@ -4,14 +4,25 @@ const btnShiny = document.querySelector('#btn-shiny');
 const btnDefault = document.querySelector('#btn-default');
 const baseApiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 const image = document.querySelector('#image');
+const imageWrapper = document.querySelector('#imageWrapper');
+const container = document.querySelector('#container');
 const pokeNumber = document.querySelector('#number');
 const pokeName = document.querySelector('#name');
+const pokeAbilities = document.querySelector('#abilities')
 // allez cherhcer les abilities pour les abilities cacher ajouté un icone et faire en sorte que img de deplacer pour faire apparaitre les abilities
 
 
-image.addEventListener('mouseover', () => {
+container.addEventListener('mouseover', () => {
     // on met l'accent sur la cible de mouseover
-    image.classList.toggle("translate");
+    imageWrapper.classList.add('translate');
+    image.style.width = '40%';
+    pokeAbilities.classList.remove('dispNone');
+});
+container.addEventListener('mouseleave', () => {
+    // on met l'accent sur la cible de mouseover
+    image.style.width = '100%';
+    imageWrapper.classList.remove('translate');
+    pokeAbilities.classList.add('dispNone');
 });
 
 const createCard = (data) => {
@@ -28,7 +39,7 @@ const createCard = (data) => {
         li.textContent = ability.ability.name;
         abilitiesList.appendChild(li);
     });
-
+    // btn changer d'artwork
     btnShiny.addEventListener('click', () => {
         image.src = data.sprites.other["official-artwork"].front_shiny;
     });
