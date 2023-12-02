@@ -8,19 +8,29 @@
 
 body {
     background: linear-gradient(to right top, #051937, #133a62, #1b5f8f, #1c88bd, #12b3eb);
+    background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
-    height: 100vh;
+    height: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
+body #logo {
+    margin-bottom: 2rem;
+    
+}
+body #logo > img{
+    width: 100%;
+}
+
 body #change-artwork {
     display: flex;
     gap: .7rem;
     max-width: 400px;
-    width: 60%;
+    width: 100%;
 
     #btn-default,
     #btn-shiny {
@@ -28,6 +38,7 @@ body #change-artwork {
         padding: 1rem .7rem;
         width: 100%;
         border-radius: 10px;
+        cursor: pointer;
     }
 
     #btn-default {
@@ -55,9 +66,9 @@ body #container {
     position: relative;
     background-color: #ffffff41;
     width: 100%;
-    max-width: 400px;
-    min-height: 400px;
-    max-height: 400px;
+    max-width: 25rem;
+    min-height: 25rem;
+    max-height: 25rem;
     border-radius: 20px;
     box-shadow: 6px 5px 6px #0000007e;
     display: flex;
@@ -69,14 +80,8 @@ body #container {
     margin: 2rem 0;
 
     #imageWrapper {
-        width: 250px;
+        width:100%;
         z-index: 10;
-        /* opacity: 20%; */
-
-        /* &:hover {
-            transform: translate(-60%, -60%);
-
-        } */
 
         & img {
             width: 100%;
@@ -89,6 +94,22 @@ body #container {
         flex-direction: row;
         font-size: clamp(1.2rem, 2.5vw, 2rem);
 
+        #abilities {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(1.2rem, 1vw, 2rem);
+        }
+
+        #infos {
+            display: flex;
+            position: absolute;
+            bottom: 2%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         #name {
             text-transform: capitalize;
             margin-left: 1rem;
@@ -100,7 +121,7 @@ body #container {
 body #btn {
     border: 2px solid #2f55a8;
     border-radius: 10px;
-    width: 60%;
+    width: 100%;
     max-width: 400px;
     cursor: pointer;
     padding: 1rem .7rem;
@@ -114,24 +135,24 @@ body #btn {
     }
 }
 
-/* #imageWrapper:hover{
-    transform: translate(-60%, -60%);
-} */
 
-#abilities {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
-}
-.translate{
-    transform: translate(-60%, -60%);
+
+
+
+.translate {
+    transform: translate(10%, -50%);
     transition: .8s ease;
+
 }
 
-.dispNone{
-    display: none;
-    transition: 1s ease-in-out;
 
+.dispNone {
+    display: none;
+
+}
+
+@media  (max-width: 300px){
+body #change-artwork {
+    flex-direction: column;
+}
 }

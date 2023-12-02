@@ -13,13 +13,11 @@ const pokeAbilities = document.querySelector('#abilities')
 
 
 container.addEventListener('mouseover', () => {
-    // on met l'accent sur la cible de mouseover
     imageWrapper.classList.add('translate');
-    image.style.width = '40%';
+    image.style.width = '70%';
     pokeAbilities.classList.remove('dispNone');
 });
 container.addEventListener('mouseleave', () => {
-    // on met l'accent sur la cible de mouseover
     image.style.width = '100%';
     imageWrapper.classList.remove('translate');
     pokeAbilities.classList.add('dispNone');
