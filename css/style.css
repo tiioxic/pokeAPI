@@ -80,7 +80,7 @@ body #container {
     margin: 2rem 0;
 
     #imageWrapper {
-        width:100%;
+        min-width: 200px;
         z-index: 10;
 
         & img {

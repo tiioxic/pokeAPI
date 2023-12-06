@@ -8,11 +8,12 @@ const imageWrapper = document.querySelector('#imageWrapper');
 const container = document.querySelector('#container');
 const pokeNumber = document.querySelector('#number');
 const pokeName = document.querySelector('#name');
-const pokeAbilities = document.querySelector('#abilities')
+const pokeAbilities = document.querySelector('#abilities');
+const hidden = "✨";
 // allez cherhcer les abilities pour les abilities cacher ajouté un icone et faire en sorte que img de deplacer pour faire apparaitre les abilities
 
 
-container.addEventListener('mouseover', () => {
+container.addEventListener('mouseenter', () => {
     imageWrapper.classList.add('translate');
     image.style.width = '70%';
     pokeAbilities.classList.remove('dispNone');
@@ -33,9 +34,16 @@ const createCard = (data) => {
     abilitiesList.innerHTML = ''; // Efface la liste précédente
 
     data.abilities.forEach(ability => {
-        const li = document.createElement('li');
-        li.textContent = ability.ability.name;
-        abilitiesList.appendChild(li);
+        if (ability.is_hidden === false) {
+            const li = document.createElement('li');
+            li.textContent = ability.ability.name;
+            abilitiesList.appendChild(li);
+
+        } else {
+            const li = document.createElement('li');
+            li.textContent = `${ability.ability.name} ${hidden}`;
+            abilitiesList.appendChild(li);
+        }
     });
     // btn changer d'artwork
     btnShiny.addEventListener('click', () => {
@@ -52,7 +60,7 @@ const createCard = (data) => {
 const fetchUrl = async (url) => {
     console.log(url);
     const data = await fetch(url);
-    if (data.status == 200) {
+    if (data.status == 200) { //permet de vérifier 
         const response = await data.json();
         // creation de la card
         createCard(response);
